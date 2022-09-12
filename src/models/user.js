@@ -1,50 +1,59 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: [true, 'The name of the user is required.']   
+    required: [true, "The name of the user is required."],
   },
   lastName: {
     type: String,
-    required: [true, 'The last name of the user is required.']   
+    required: [true, "The last name of the user is required."],
   },
-  email:  {
+  // email: {
+  //   type: String,
+  //   required: [true, "The email of the user is required."],
+  // },
+  password: {
     type: String,
-    required: [true, 'The email of the user is required.']   
-  },
-  password:  {
-    type: String,
-    required: [true, 'The pasword of the user is required.']   
+    required: [true, "The pasword of the user is required."],
   },
   bloodType: {
     type: String,
-    enum: ['A+', 'B+', 'O+', 'AB+', 'A-', 'B-', 'O-', 'AB-'],
-    required: [true, 'Blood type is required.']
+    enum: ["A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-"],
+    required: [true, "Blood type is required."],
   },
-  isActive:  {
+  avialble: {
+    type: String,
+    enum: ["YES", "NO"],
+    required: [true, "Describe aviablity required"],
+  },
+  isActive: {
     type: Boolean,
     required: true,
-    default: true
+    default: true,
   },
-  locationLat:  {
+  phone: {
+    type: Number,
+    required: false,
+  },
+  State: {
     type: String,
-    required: false  
+    required: false,
   },
-  locationlong:  {
+  City: {
     type: String,
-    required: false
+    required: false,
   },
-  created_at:  {
-    type: Date, 
+  created_at: {
+    type: Date,
     default: Date.now(),
-    required: false
+    required: false,
   },
   updated_at: {
-    type: Date,    
+    type: Date,
     required: Date.now(),
-    required: false
-  }
+    required: false,
+  },
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);
