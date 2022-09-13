@@ -22,7 +22,10 @@ if (process.env.NODE_ENV === "development") {
 // console.log(process.env.NODE_ENV);
 
 //MongoDB configurations
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Routes
 const donationsRoute = require("./routes/donations");

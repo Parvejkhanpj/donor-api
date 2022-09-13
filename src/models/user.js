@@ -9,13 +9,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "The last name of the user is required."],
   },
-  // email: {
-  //   type: String,
-  //   required: [true, "The email of the user is required."],
-  // },
+  email: {
+    type: String,
+    required: [true, "The email of the user is required."],
+  },
   password: {
     type: String,
     required: [true, "The pasword of the user is required."],
+  },
+  cpassword: {
+    type: String,
+    required: [true, "The confirm pasword of the user is required."],
   },
   bloodType: {
     type: String,
