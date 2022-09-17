@@ -2,15 +2,10 @@ const mongoose = require("mongoose");
 // var ObjectId = mongoose.Schema.Types.ObjectId;
 
 const donations = new mongoose.Schema({
-  patientName: {
+  title: {
     type: String,
-    required: [true, "patient name is required"],
+    required: [true, "Reason for donation is required."],
   },
-  hospitalName: {
-    type: String,
-    required: [true, "Hospital name is required."],
-  },
-
   description: {
     type: String,
     required: [true, "Description for donation is required."],
@@ -19,18 +14,6 @@ const donations = new mongoose.Schema({
     type: String,
     enum: ["A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-"],
     required: [true, "Blood type is required."],
-  },
-  phone: {
-    type: Number,
-    required: false,
-  },
-  State: {
-    type: String,
-    required: [true, "State Name is Required"],
-  },
-  City: {
-    type: String,
-    required: [true, "City Name is Required"],
   },
   accepted: {
     type: Boolean,
