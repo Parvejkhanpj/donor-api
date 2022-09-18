@@ -35,6 +35,7 @@ const donations = new mongoose.Schema({
   //   type: new date(),
   //   required: [true, "Date is required"],
   // },
+  // this is date method
   accepted: {
     type: Boolean,
     default: false,
