@@ -31,6 +31,10 @@ const donations = new mongoose.Schema({
     enum: ["A+", "B+", "O+", "AB+", "A-", "B-", "O-", "AB-"],
     required: [true, "Blood type is required."],
   },
+  // date: {
+  //   type: new date(),
+  //   required: [true, "Date is required"],
+  // },
   accepted: {
     type: Boolean,
     default: false,
