@@ -30,10 +30,12 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 const donationsRoute = require("./routes/donations");
 const usersRoute = require("./routes/users");
+const authRoutes = require("./routes/auth");
 
 // Adding Routes path
 app.use("/api/donations", donationsRoute);
 app.use("/api/users", usersRoute);
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to donations API!");
