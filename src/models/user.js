@@ -64,9 +64,10 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign({ _id: this.id }, process.env.JWTPRIVETEKEY, {
+  const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVETEKEY, {
     expiresIn: "7d",
   });
+  console.log("Asfa");
   return token;
 };
 
