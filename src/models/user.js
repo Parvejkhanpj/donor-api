@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const Joi = require("joi");
+const passwordComplexcity = require("joi-password-complexity");
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -60,4 +63,25 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchema);
+userSchema.methods.generateAuthToken = function () {
+  const token = jwt.sign({ _id: this.id }, process.env.JWTPRIVETEKEY, {
+    expiresIn: "7d",
+  });
+  return token;
+};
+
+const User = mongoose.model("user", userSchema);
+
+// module.exports = mongoose.model("User", userSchema);
+
+const validate = (data) => {
+  const schema = Joi.object({
+    firstName: Joi.string().required().label("First Name"),
+    lastName: Joi.string().required().label("Last Name"),
+    email: Joi.string().email().required().label("Email"),
+    password: passwordComplexcity().required().label("Password"),
+  });
+  return schema.validate;
+};
+
+module.exports = { User, validate };
